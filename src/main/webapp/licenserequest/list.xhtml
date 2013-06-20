@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sos="http://java.sun.com/jsf/composite/soscomp"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="head">
+		<title>Available</title>
+	</ui:define>
+
+	<ui:define name="body">
+		<h:dataTable id="licenseRequests"
+			value="#{licenseRequestService.list}" var="_licenseRequest">
+			<h:column id="id-column">
+				<f:facet id="id_header" name="header">ID</f:facet>
+				<h:outputLink id="view_link" value="/biz/spring/licenserequest/view?licenseRequestId=#{_licenseRequest.id}">
+				<h:outputText id="id" value="#{_licenseRequest.id }"></h:outputText>
+				</h:outputLink>
+			</h:column>
+
+			<h:column id="first_name-column">
+				<f:facet id="name_header" name="header">First Name</f:facet>
+				<h:outputText id="firstName" value="#{_licenseRequest.firstName }"></h:outputText>
+			</h:column>
+
+			<h:column id="last_name-column">
+				<f:facet id="name_header" name="header">Last Name</f:facet>
+				<h:outputText id="lastName" value="#{_licenseRequest.lastName }"></h:outputText>
+			</h:column>
+
+		</h:dataTable>
+	</ui:define>
+
+</ui:composition>

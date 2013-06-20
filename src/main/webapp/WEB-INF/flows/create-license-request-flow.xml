@@ -1,0 +1,23 @@
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="create">
+
+    <persistence-context/>
+
+    <var name="licenseRequest" class="us.co.state.sos.licenserequest.LicenseRequest"/>
+
+    <view-state id="create" view="/licenserequest/create.xhtml">
+        <transition on="createLicenseRequest" to="saveLicenseRequest"/>
+    </view-state>
+
+    <action-state id="saveLicenseRequest">
+        <evaluate expression="licenseRequestService.create(licenseRequest)"/>
+        <transition to="view" on="Success"/>
+    </action-state>
+
+    <end-state id="view" view="/licenserequest/view.xhtml" commit="true">
+    	<output name="licenseRequestID" value="licenseRequest.id" type="java.lang.Long"/>
+    </end-state>
+</flow>

@@ -1,0 +1,18 @@
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	                    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd "
+	version="2.1">
+
+	<application>
+		<message-bundle>
+			us.co.state.sos.Messages
+		</message-bundle>
+        <el-resolver>
+            org.springframework.web.jsf.el.SpringBeanFacesELResolver
+        </el-resolver>
+	</application>
+	<managed-bean>
+		<managed-bean-name>currentDateTime</managed-bean-name>
+		<managed-bean-class>org.joda.time.DateTime</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+</faces-config>

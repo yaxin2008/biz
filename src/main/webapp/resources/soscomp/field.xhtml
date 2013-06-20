@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<head>
+<title>field</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+</head>
+<composite:interface>
+	<composite:attribute name="name" />
+	<composite:attribute name="label" />
+	<composite:attribute name="value" />
+	<composite:attribute name="required" default="false" />
+	<composite:editableValueHolder name="inputText"
+		targets="#{cc.attrs.name}" />
+
+</composite:interface>
+
+<composite:implementation>
+	<div>
+		<h:outputLabel id="#{cc.attrs.name}_label"
+			name="#{cc.attrs.name}_label" for="#{cc.attrs.name}"
+			value="#{cc.attrs.label}" />
+		<h:inputText id="#{cc.attrs.name}" name="#{cc.attrs.name}"
+			value="#{cc.attrs.value}" required="true" />
+		<h:outputText value="*" rendered="#{cc.attrs.required}"></h:outputText>
+		<h:messages for="#{cc.attrs.name}" />
+	</div>
+</composite:implementation>
+
+
+</html>

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sos="http://java.sun.com/jsf/composite/soscomp"
+	template="/WEB-INF/templates/main.xhtml">
+
+	<ui:define name="head">
+		<title>Simple JSF Facelets page</title>
+	</ui:define>
+	<ui:define name="body">
+		<h:form id="create_license_request_form"
+			name="create_license_request_form">
+			<sos:field name="first_name" label="First Name" required="true"
+				value="#{licenseRequest.firstName}">
+				<f:validateLength minimum="3" for="inputText" />
+			</sos:field>
+
+			<sos:field name="last_name" label="Last Name" required="true"
+				value="#{licenseRequest.lastName}">
+				<f:validateLength minimum="3" for="inputText" />
+			</sos:field>
+
+			<sos:field name="line1" label="Line1" required="true"
+				value="#{licenseRequest.line1}">
+				<f:validateLength minimum="3" for="inputText" />
+			</sos:field>
+
+			<sos:field name="line2" label="Line2" required="false"
+				value="#{licenseRequest.line2}">
+			</sos:field>
+
+			<sos:field name="fein" label="Fein" required="true"
+				value="#{licenseRequest.fein}">
+				<f:validateRegex pattern="^\d{2}-\d{7}$" for="inputText" />
+			</sos:field>
+
+			<sos:field id="issuedDateContainer" name="issuedDate" label="Issue Date" required="true"
+				value="#{licenseRequest.issuedDate}">
+				<f:converter converterId="sosDateConverter" for="inputText" />
+			</sos:field>
+
+			<sos:field id="expirationDateContainer" name="expirationDate" label="Expiration Date"
+				required="true" value="#{licenseRequest.expirationDate}">
+				<f:converter converterId="sosDateConverter" for="inputText" />
+				<f:validator validatorId="dateAfterValidator" for="inputText" />
+			</sos:field>
+
+			<h:commandButton id="create" name="create" value="Create"
+				action="createLicenseRequest" />
+
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

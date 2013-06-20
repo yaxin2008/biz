@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>Lisence Request: #{licenseRequest.firstName} #{licenseRequest.firstName}}</title>
+</head>
+<body>
+		<h:panelGrid columns="2">
+			<h:outputLabel id="id_label" name="id_label"
+				for="id" value="ID:" />
+			<h:outputText id="id" name="id"
+				value="#{licenseRequest.id}" 
+				required="false">
+			</h:outputText>
+			
+			<h:outputLabel id="first_name_label" name="first_name_label"
+				for="first_name" value="First Name:" />
+			<h:outputText id="first_name" name="first_name"
+				value="#{licenseRequest.firstName}" 
+				required="true">
+			</h:outputText>
+
+			<h:outputLabel id="last_name_label" name="last_name_label"
+				for="last_name" value="Last Name:" />
+			<h:outputText id="last_name" name="last_name"
+				value="#{licenseRequest.lastName}" 
+				required="true"/>
+
+			<h:outputLabel id="line1_label" name="line1_label" for="line1"
+				value="Line1:" />
+			<h:outputText id="line1" name="line1" value="#{licenseRequest.line1}" 
+				required="true"/>
+
+			<h:outputLabel id="line2_label" name="line2_label" for="line2"
+				value="Line2:" />
+			<h:outputText id="line2" name="line2" value="#{licenseRequest.line2}" />
+
+			<h:outputLabel id="fein_label" name="fein_label" for="fein"
+				value="Fein:" />
+			<h:outputText id="fein" name="fein" value="#{licenseRequest.fein}" >
+			</h:outputText>
+			
+			
+			<h:outputLabel id="issuedDate_label" name="issuedDate_label" for="issuedDate"
+				value="Issued Date:" />
+			<h:outputText id="issuedDate" name="issuedDate" value="#{licenseRequest.issuedDate}">
+			<f:converter converterId="sosDateConverter"/>
+			</h:outputText>
+
+			<h:outputLabel id="expirationDate_label" name="expirationDate_label" for="expirationDate"
+				value="Expiration Date:" />
+			<h:outputText id="expirationDate" name="expirationDate" value="#{licenseRequest.expirationDate}" >
+			<f:converter converterId="sosDateConverter"/>
+			</h:outputText>
+			
+		</h:panelGrid>
+
+
+
+</body>
+</html>
